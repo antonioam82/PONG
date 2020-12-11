@@ -32,6 +32,14 @@ ball.color("white")
 ball.penup()
 ball.goto(0, 0)
 
+def paddle_a_up():
+    y = paddle_a.ycor()
+    y += 20
+    paddle_a.sety(y)
+
+wn.listen()
+wn.onkeypress(paddle_a_up, "w")
+
 
 while True:
     wn.update()
