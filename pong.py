@@ -37,8 +37,14 @@ def paddle_a_up():
     y += 20
     paddle_a.sety(y)
 
+def paddle_a_down():
+    y = paddle_a.ycor()
+    y -= 20
+    paddle_a.sety(y)
+
 wn.listen()
 wn.onkeypress(paddle_a_up, "w")
+wn.onkeypress(paddle_a_down, "d")
 
 
 while True:
