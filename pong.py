@@ -31,8 +31,8 @@ ball.shape("square")
 ball.color("white")
 ball.penup()
 ball.goto(0, 0)
-ball.dx = 2
-ball.dy = 2
+ball.dx = 2#0.2
+ball.dy = 2#0.2
 
 def paddle_a_up():
     y = paddle_a.ycor()
