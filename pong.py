@@ -54,9 +54,9 @@ def paddle_b_down():
 
 wn.listen()
 wn.onkeypress(paddle_a_up, "w")
-wn.onkeypress(paddle_a_down, "d")
-wn.onkeypress(paddle_b_up, "p")
-wn.onkeypress(paddle_b_down, "k")
+wn.onkeypress(paddle_a_down, "s")
+wn.onkeypress(paddle_b_up, "Up")
+wn.onkeypress(paddle_b_down, "Down")
 
 while True:
     wn.update()
