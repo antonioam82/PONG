@@ -79,8 +79,6 @@ def init_playsoun():
     t = threading.Thread(target=play_sound)
     t.start()
     
-    
-
 wn.listen()
 wn.onkeypress(paddle_a_up, "w")
 wn.onkeypress(paddle_a_down, "s")
