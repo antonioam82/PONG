@@ -1,4 +1,4 @@
- import turtle
+import turtle
 import threading
 from playsound import playsound
 
@@ -79,8 +79,6 @@ def init_playsoun():
     t = threading.Thread(target=play_sound)
     t.start()
     
-    
-
 wn.listen()
 wn.onkeypress(paddle_a_up, "w")
 wn.onkeypress(paddle_a_down, "s")
@@ -126,6 +124,6 @@ while True:
     if (ball.xcor() < -340 and ball.xcor() > -350) and (ball.ycor() < paddle_b.ycor() + 50 and ball.ycor() > paddle_a.ycor() - 50):
         ball.setx(-340)
         ball.dx *= -1        
-        init_playsoun()    
+        init_playsoun()   
 
 
