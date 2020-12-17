@@ -86,44 +86,47 @@ wn.onkeypress(paddle_b_up, "Up")
 wn.onkeypress(paddle_b_down, "Down")
 
 while True:
-    wn.update()
+    try:
+        wn.update()
 
-    #MOVE BALL
-    ball.setx(ball.xcor() + ball.dx)
-    ball.sety(ball.ycor() + ball.dy)
+        #MOVE BALL
+        ball.setx(ball.xcor() + ball.dx)
+        ball.sety(ball.ycor() + ball.dy)
 
-    #BORDER
-    if ball.ycor() > 290:
-        ball.sety(290)
-        ball.dy *= -1
-        init_playsoun()
+        #BORDER
+        if ball.ycor() > 290:
+            ball.sety(290)
+            ball.dy *= -1
+            init_playsoun()
 
-    if ball.ycor() < -290:
-        ball.sety(-290)
-        ball.dy *= -1
-        init_playsoun()
+        if ball.ycor() < -290:
+           ball.sety(-290)
+           ball.dy *= -1
+           init_playsoun()
 
-    if ball.xcor() > 390:
-        ball.goto(0, 0)
-        ball.dx *= -1
-        score_a += 1
-        update_score(score_a, score_b)
+        if ball.xcor() > 390:
+            ball.goto(0, 0)
+            ball.dx *= -1
+            score_a += 1
+            update_score(score_a, score_b)
 
-
-    if ball.xcor() < -390:
-        ball.goto(0, 0)
-        ball.dx *= -1
-        score_b += 1
-        update_score(score_a, score_b)
+        if ball.xcor() < -390:
+            ball.goto(0, 0)
+            ball.dx *= -1
+            score_b += 1
+            update_score(score_a, score_b)
         
-    if (ball.xcor() > 340 and ball.xcor() < 350) and (ball.ycor() < paddle_b.ycor() + 50 and ball.ycor() > paddle_b.ycor() - 50):
-        ball.setx(340)
-        ball.dx *= -1
-        init_playsoun()
+        if (ball.xcor() > 340 and ball.xcor() < 350) and (ball.ycor() < paddle_b.ycor() + 50 and ball.ycor() > paddle_b.ycor() - 50):
+            ball.setx(340)
+            ball.dx *= -1
+            init_playsoun()
 
-    if (ball.xcor() < -340 and ball.xcor() > -350) and (ball.ycor() < paddle_b.ycor() + 50 and ball.ycor() > paddle_a.ycor() - 50):
-        ball.setx(-340)
-        ball.dx *= -1        
-        init_playsoun()   
+        if (ball.xcor() < -340 and ball.xcor() > -350) and (ball.ycor() < paddle_b.ycor() + 50 and ball.ycor() > paddle_a.ycor() - 50):
+            ball.setx(-340)
+            ball.dx *= -1        
+            init_playsoun()
+
+    except:
+        break   
 
 
