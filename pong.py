@@ -84,8 +84,6 @@ def init_game():
     global static
     print("START")
     static = False
-    #return static
-    
     
 wn.listen()
 wn.onkeypress(paddle_a_up, "w")
@@ -119,12 +117,14 @@ while True:
             ball.dx *= -1
             score_a += 1
             update_score(score_a, score_b)
+            static = True
 
         if ball.xcor() < -390:
             ball.goto(0, 0)
             ball.dx *= -1
             score_b += 1
             update_score(score_a, score_b)
+            static = True
         
         if (ball.xcor() > 340 and ball.xcor() < 350) and (ball.ycor() < paddle_b.ycor() + 50 and ball.ycor() > paddle_b.ycor() - 50):
             ball.setx(340)
