@@ -1,4 +1,4 @@
-import turtle
+ import turtle
 import threading
 from playsound import playsound
 
@@ -46,11 +46,11 @@ pen.color("white")
 pen.penup()
 pen.hideturtle()
 pen.goto(0, 260)
-pen.write("Player A: 0 Player B: 0",align="center", font=("Courier", 24, "bold"))
+pen.write("Player A: 0 Player B: 0",align="center", font=("Fixedsys", 24, "bold"))
 
 def update_score(sa,sb):
     pen.clear()
-    pen.write("Player A: {} Player B: {}".format(sa, sb),align="center", font=("Courier", 24, "bold"))    
+    pen.write("Player A: {} Player B: {}".format(sa, sb),align="center", font=("Fixedsys", 24, "bold")) #Courier   
 
 def paddle_a_up():
     y = paddle_a.ycor()
@@ -127,6 +127,6 @@ while True:
             init_playsoun()
 
     except:
-        break   
+        break
 
 
