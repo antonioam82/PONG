@@ -1,5 +1,6 @@
 import turtle
 import threading
+import time
 from playsound import playsound
 
 wn = turtle.Screen()
@@ -134,6 +135,7 @@ while True:
             score_a += 1
             update_score(score_a, score_b)
             static = True
+            time.sleep(1)
             pen2_atribs("white")
 
         if ball.xcor() < -390:
@@ -142,6 +144,7 @@ while True:
             score_b += 1
             update_score(score_a, score_b)
             static = True
+            time.sleep(1)
             pen2_atribs("white")
         
         if (ball.xcor() > 340 and ball.xcor() < 350) and (ball.ycor() < paddle_b.ycor() + 50 and ball.ycor() > paddle_b.ycor() - 50):
