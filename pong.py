@@ -49,6 +49,14 @@ pen.hideturtle()
 pen.goto(0, 260)
 pen.write("Player A: 0 Player B: 0",align="center", font=("Fixedsys", 24, "bold"))
 
+pen2 = turtle.Turtle()
+pen2.speed(0)
+pen2.color("white")
+pen2.penup()
+pen2.hideturtle()
+pen2.goto(0, 120)
+pen2.write("PRESS ENTER TO START",align="center", font=("Fixedsys", 24, "bold"))
+
 def update_score(sa,sb):
     pen.clear()
     pen.write("Player A: {} Player B: {}".format(sa, sb),align="center", font=("Fixedsys", 24, "bold")) #Courier   
@@ -80,10 +88,18 @@ def init_playsoun():
     t = threading.Thread(target=play_sound)
     t.start()
 
+def pen2_atribs(c):
+    pen2.color(c)
+    pen2.write("PRESS ENTER TO START",align="center", font=("Fixedsys", 24, "bold"))
+    paddle_a.goto(-350, 0)
+    paddle_b.goto(350, 0)
+    
+    
 def init_game():
     global static
     print("START")
     static = False
+    pen2_atribs("black")
     
 wn.listen()
 wn.onkeypress(paddle_a_up, "w")
@@ -118,6 +134,7 @@ while True:
             score_a += 1
             update_score(score_a, score_b)
             static = True
+            pen2_atribs("white")
 
         if ball.xcor() < -390:
             ball.goto(0, 0)
@@ -125,6 +142,7 @@ while True:
             score_b += 1
             update_score(score_a, score_b)
             static = True
+            pen2_atribs("white")
         
         if (ball.xcor() > 340 and ball.xcor() < 350) and (ball.ycor() < paddle_b.ycor() + 50 and ball.ycor() > paddle_b.ycor() - 50):
             ball.setx(340)
