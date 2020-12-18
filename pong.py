@@ -1,4 +1,4 @@
- import turtle
+import turtle
 import threading
 from playsound import playsound
 
@@ -39,6 +39,7 @@ ball.penup()
 ball.goto(0, 0)
 ball.dx = 0.2#2
 ball.dy = 0.2#2
+static = True
 
 pen = turtle.Turtle()
 pen.speed(0)
@@ -78,20 +79,29 @@ def play_sound():
 def init_playsoun():
     t = threading.Thread(target=play_sound)
     t.start()
+
+def init_game():
+    global static
+    print("START")
+    static = False
+    #return static
+    
     
 wn.listen()
 wn.onkeypress(paddle_a_up, "w")
 wn.onkeypress(paddle_a_down, "s")
 wn.onkeypress(paddle_b_up, "Up")
 wn.onkeypress(paddle_b_down, "Down")
+wn.onkeypress(init_game, "Return")
 
 while True:
     try:
         wn.update()
 
         #MOVE BALL
-        ball.setx(ball.xcor() + ball.dx)
-        ball.sety(ball.ycor() + ball.dy)
+        if static == False:
+            ball.setx(ball.xcor() + ball.dx)
+            ball.sety(ball.ycor() + ball.dy)
 
         #BORDER
         if ball.ycor() > 290:
@@ -128,5 +138,6 @@ while True:
 
     except:
         break
+    
 
 
