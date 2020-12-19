@@ -65,14 +65,12 @@ def update_score(sa,sb):
 def paddle_a_up():
     y = paddle_a.ycor()
     if y <= 240:
-        print(y)
         y += 20
         paddle_a.sety(y)
 
 def paddle_a_down():
     y = paddle_a.ycor()
     if y >= -220:
-        print(y)
         y -= 20
         paddle_a.sety(y)
 
@@ -95,18 +93,20 @@ def init_playsoun():
     t = threading.Thread(target=play_sound)
     t.start()
 
-def pen2_atribs(c):
-    pen2.color(c)
-    pen2.write("PRESS ENTER TO START",align="center", font=("Fixedsys", 24, "bold"))
-    paddle_a.goto(-350, 0)
-    paddle_b.goto(350, 0)
+def pen2_atribs():
+    #pen2.color(c)
+    #pen2.write("PRESS ENTER TO START",align="center", font=("Fixedsys", 24, "bold"))
+    print("jjj")
+   
+    pen2.clear()
+
     
     
 def init_game():
     global static
     print("START")
     static = False
-    pen2_atribs("black")
+    pen2_atribs()
     
 wn.listen()
 wn.onkeypress(paddle_a_up, "w")
@@ -142,7 +142,9 @@ while True:
             update_score(score_a, score_b)
             static = True
             time.sleep(1)
-            pen2_atribs("white")
+            pen2.write("PRESS ENTER TO START",align="center", font=("Fixedsys", 24, "bold"))
+            paddle_a.goto(-350, 0)
+            paddle_b.goto(350, 0)             
 
         if ball.xcor() < -390:
             ball.goto(0, 0)
@@ -151,7 +153,9 @@ while True:
             update_score(score_a, score_b)
             static = True
             time.sleep(1)
-            pen2_atribs("white")
+            pen2.write("PRESS ENTER TO START",align="center", font=("Fixedsys", 24, "bold"))
+            paddle_a.goto(-350, 0)
+            paddle_b.goto(350, 0)             
         
         if (ball.xcor() > 340 and ball.xcor() < 350) and (ball.ycor() < paddle_b.ycor() + 50 and ball.ycor() > paddle_b.ycor() - 50):
             ball.setx(340)
