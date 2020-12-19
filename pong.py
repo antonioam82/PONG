@@ -92,21 +92,12 @@ def play_sound():
 def init_playsoun():
     t = threading.Thread(target=play_sound)
     t.start()
-
-def pen2_atribs():
-    #pen2.color(c)
-    #pen2.write("PRESS ENTER TO START",align="center", font=("Fixedsys", 24, "bold"))
-    print("jjj")
-   
-    pen2.clear()
-
-    
     
 def init_game():
     global static
     print("START")
     static = False
-    pen2_atribs()
+    pen2.clear()
     
 wn.listen()
 wn.onkeypress(paddle_a_up, "w")
