@@ -64,23 +64,29 @@ def update_score(sa,sb):
 
 def paddle_a_up():
     y = paddle_a.ycor()
-    y += 20
-    paddle_a.sety(y)
+    if y <= 240:
+        print(y)
+        y += 20
+        paddle_a.sety(y)
 
 def paddle_a_down():
     y = paddle_a.ycor()
-    y -= 20
-    paddle_a.sety(y)
+    if y >= -220:
+        print(y)
+        y -= 20
+        paddle_a.sety(y)
 
 def paddle_b_up():
     y = paddle_b.ycor()
-    y += 20
-    paddle_b.sety(y)
+    if y <= 240:
+        y += 20
+        paddle_b.sety(y)
 
 def paddle_b_down():
     y = paddle_b.ycor()
-    y -= 20
-    paddle_b.sety(y)
+    if y >= -220:
+        y -= 20
+        paddle_b.sety(y)
 
 def play_sound():
     playsound("pong.mp3")
