@@ -38,8 +38,8 @@ ball.shape("square")
 ball.color("white")
 ball.penup()
 ball.goto(0, 0)
-ball.dx = 0.3#0.2#2
-ball.dy = 0.3#0.2#2
+ball.dx = 0.2#0.2#2
+ball.dy = 0.2#0.2#2
 static = True
 
 pen = turtle.Turtle()
@@ -100,6 +100,8 @@ def init_game():
     pen2.clear()
 
 def reset_screen():
+    ball.goto(0, 0)
+    ball.dx *= -1    
     pen2.write("PRESS ENTER TO START",align="center", font=("Fixedsys", 24, "bold"))
     paddle_a.goto(-350, 0)
     paddle_b.goto(350, 0)     
@@ -132,8 +134,6 @@ while True:
            init_playsoun()
 
         if ball.xcor() > 390:
-            ball.goto(0, 0)
-            ball.dx *= -1
             score_a += 1
             update_score(score_a, score_b)
             static = True
@@ -141,15 +141,12 @@ while True:
             reset_screen()
 
         if ball.xcor() < -390:
-            ball.goto(0, 0)
-            ball.dx *= -1
             score_b += 1
             update_score(score_a, score_b)
             static = True
             time.sleep(1)
             reset_screen()
             
-        
         if (ball.xcor() > 340 and ball.xcor() < 350) and (ball.ycor() < paddle_b.ycor() + 50 and ball.ycor() > paddle_b.ycor() - 50):
             ball.setx(340)
             ball.dx *= -1
