@@ -58,9 +58,9 @@ pen2.hideturtle()
 pen2.goto(0, 120)
 pen2.write("PRESS ENTER TO START",align="center", font=("Fixedsys", 24, "bold"))
 
-def update_score(sa,sb):
+def update_score():
     pen.clear()
-    pen.write("Player A: {} Player B: {}".format(sa, sb),align="center", font=("Fixedsys", 24, "bold")) #Courier   
+    pen.write("Player A: {} Player B: {}".format(score_a, score_b),align="center", font=("Fixedsys", 24, "bold")) #Courier   
 
 def paddle_a_up():
     y = paddle_a.ycor()
@@ -95,7 +95,6 @@ def init_playsoun():
     
 def init_game():
     global static
-    print("START")
     static = False
     pen2.clear()
 
@@ -135,14 +134,14 @@ while True:
 
         if ball.xcor() > 390:
             score_a += 1
-            update_score(score_a, score_b)
+            update_score()
             static = True
             time.sleep(1)
             reset_screen()
 
         if ball.xcor() < -390:
             score_b += 1
-            update_score(score_a, score_b)
+            update_score()
             static = True
             time.sleep(1)
             reset_screen()
