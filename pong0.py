@@ -70,11 +70,11 @@ pen2.hideturtle()
 pen2.goto(0, 120)
 pen2.write("PRESS ENTER TO START",align="center", font=("Fixedsys", 24, "bold"))
 
-
 #ACTUALIZA MARCADOR.
 def update_score():
     pen.clear()
-    pen.write("{}       {}".format(score_a,score_b),align="center", font=("Fixedsys", 60, "bold"))  
+    pen.write("{}       {}".format(score_a,score_b),
+    align="center", font=("Fixedsys", 60, "bold"))  
 
 #MOVER PALA "A" HACIA ARRIBA
 def paddle_a_up():
@@ -90,7 +90,7 @@ def paddle_a_down():
         y -= 20
         paddle_a.sety(y)
 
-#MOVER PARA "B" HACIA ARRIBA
+#MOVER PALA "B" HACIA ARRIBA
 def paddle_b_up():
     y = paddle_b.ycor()
     if y <= 240:
@@ -123,7 +123,8 @@ def init_game():
 def reset_screen():
     ball.goto(0, 0)
     ball.dx *= -1    
-    pen2.write("PRESS ENTER TO START",align="center", font=("Fixedsys", 24, "bold"))
+    pen2.write("PRESS ENTER TO START",
+    align="center", font=("Fixedsys", 24, "bold"))
     paddle_a.goto(-350, 0)
     paddle_b.goto(350, 0)
 
@@ -139,22 +140,24 @@ wn.onkeypress(init_game, "Return")
 while True:
     try:
         wn.update()
-
         #MOVER PELOTA
         if static == False:
             ball.setx(ball.xcor() + ball.dx)
             ball.sety(ball.ycor() + ball.dy)
 
+        #REBOTE EN EL MARGEN INFERIOR.
         if ball.ycor() > 290:
             ball.sety(290)
             ball.dy *= -1
             init_playsoun()
 
+        #REBOTE EN EL MARGEN SUPERIOR.
         if ball.ycor() < -290:
            ball.sety(-290)
            ball.dy *= -1
            init_playsoun()
 
+        #PELOTA SOBREPASA LA PALA B
         if ball.xcor() > 390:
             score_a += 1
             update_score()
@@ -162,22 +165,24 @@ while True:
             time.sleep(1)
             reset_screen()
 
+        #PELOTA SOBREPASA LA PALA A
         if ball.xcor() < -390:
             score_b += 1
             update_score()
             static = True
             time.sleep(1)
             reset_screen()
-            
+
+        #REBOTE EN LA PALA A.
         if (ball.xcor() > 340 and ball.xcor() < 350) and (ball.ycor() < paddle_b.ycor() + 50 and ball.ycor() > paddle_b.ycor() - 50):
             ball.setx(340)
             ball.dx *= -1
             init_playsoun()
 
+        #REBOTE EN LA PALA B
         if (ball.xcor() < -340 and ball.xcor() > -350) and (ball.ycor() < paddle_a.ycor() + 50 and ball.ycor() > paddle_a.ycor() - 50):
             ball.setx(-340)
             ball.dx *= -1        
             init_playsoun()
-
     except:
         break
